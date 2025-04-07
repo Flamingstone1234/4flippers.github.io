@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Egg to Fish Game</title>
+  <style>
+    body {
+      background-color: #cce7ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .egg, .fish {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      transition: transform 0.3s ease;
+    }
+    .egg {
+      background-color: #ffd700;
+      border-radius: 50%;
+    }
+    .fish {
+      background-color: #ff5733;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+    }
+  </style>
+</head>
+<body>
+  <script>
+    document.body.addEventListener('click', function (e) {
+      const egg = document.createElement('div');
+      egg.classList.add('egg');
+      egg.style.left = `${e.clientX - 25}px`;
+      egg.style.top = `${e.clientY - 25}px`;
+
+      // Add click event to turn egg into fish
+      egg.addEventListener('click', function () {
+        egg.classList.remove('egg');
+        egg.classList.add('fish');
+      });
+
+      document.body.appendChild(egg);
+    });
+  </script>
+</body>
+</html>
